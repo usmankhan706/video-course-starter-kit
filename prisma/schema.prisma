@@ -92,6 +92,12 @@ model Video {
   aspectRatio       String?
   status            String  @default("preparing")
   posterTime        Float?
+  videoId           String? // New field to store the video asset ID
+}
+model Assetid {
+  id                Int     @id @default(autoincrement())
+  playbackId        String
+  createdAt  DateTime @default(now())
 }
 
 model UserLessonProgress {

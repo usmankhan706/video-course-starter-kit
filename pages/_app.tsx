@@ -1,10 +1,13 @@
 import '../styles/globals.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import type { AppProps } from 'next/app'
 import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import { SessionProvider } from "next-auth/react"
 import Layout from 'components/layout'
 import { Toaster } from 'react-hot-toast'
+
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
