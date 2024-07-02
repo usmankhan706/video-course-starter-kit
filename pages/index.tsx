@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import MuxPlayer from '@mux/mux-player-react';
-
 interface Video {
   playbackId: string;
 }
@@ -14,7 +13,7 @@ const VideoUploader = () => {
   // const [videos, setVideoIds] = useState([]);
   const [videoIds, setVideoIds] = useState<Video[]>([]);
   
-
+  const [isVideoUpload, setUploadVideo]= useState (false);
   const [videoAssetsId, setVideoAssetsId] = useState('');
 
   const getUploadUrl = async () => {
@@ -80,6 +79,7 @@ const VideoUploader = () => {
         console.error('Error uploading file:', error);
       }
     }
+    setUploadVideo(true);
   };
   // const handleGetVideos = async (event:any) => {
 
@@ -97,52 +97,57 @@ const VideoUploader = () => {
       console.error('Error fetching video IDs:', error);
     }
   };
+  const handleDelete = async () => {
+    try {
+      console.log("in Delete button ");
+      
+      
+      
+      
+    } catch (error) {
+      console.error('Error fetching video IDs:', error);
+    }
+  };
 // }
 
-  useEffect(() => {
+useEffect(() => {
+    console.log({isVideoUpload});
     fetchVideoIds();
-  }, []);
+    
+  }, [isVideoUpload]);
+  
 
 
   return (
-    // <div>
-      
-    //     <input type="file" accept="video/*" onChange={handleFileChange} />
-    //     {/* <button onChange={handleGetVideos}></button> */}
-      
-    //   <div style={{ "zIndex": "1000" }}>
-    //     {videoUrl && (
-    //       <MuxPlayer
-    //         streamType="on-demand"
-    //         playbackId={videoAssetsId}
-    //         metadataVideoTitle="Placeholder (optional)"
-    //         metadataViewerUserId="Placeholder (optional)"
-    //         primaryColor="#FFFFFF"
-    //         secondaryColor="#000000"
-    //       />
-    //     )}
-    //   </div>
-    // </div>
     <div>
+    <div className="bg-white p-4 shadow-md rounded-lg mt-5">
       <input type="file" accept="video/*" onChange={handleFileChange} />
-      <div className="row text-center mb-5 mt-4" style={{margin:"auto 400px"}}>
-      <div className="col-sm-3 col-md-12 text-center">
+      {/* <p className="text-gray-800">Hello, Tailwind CSS!</p> */}
+    </div>
+    <button onClick={handleDelete}>
+    <div className="max-w-7xl mx-auto px-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
         {videoIds.map((video, index) => (
-          video.playbackId && (
-            <div key={index}>
-              <MuxPlayer
-                streamType="on-demand"
-                playbackId={video.playbackId}
-                metadataVideoTitle="Video"
-                metadataViewerUserId="Viewer"
-                primaryColor="#FFFFFF"
-                secondaryColor="#000000"
-              />
-            </div>
-          )
-        ))}
-      </div>
-      </div>
+            video.playbackId && (
+                <div key={index} className="flex justify-center">
+                    <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                        <MuxPlayer
+                            streamType="on-demand"
+                            playbackId={video.playbackId}
+                            metadataVideoTitle="Video"
+                            metadataViewerUserId="Viewer"
+                            primaryColor="#FFFFFF"
+                            secondaryColor="#000000"
+                            
+                        />
+                    </div>
+                </div>
+            )
+          ))}
+    </div>
+</div>
+          </button>
+
     </div>
     
   );

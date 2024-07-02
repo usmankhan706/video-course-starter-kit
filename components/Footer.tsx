@@ -1,13 +1,17 @@
-const Footer = () => (
-  <footer>
-    <div className="row" style={{height:"70px"}}>
-      <div className="container bg-dark">
-        <div className="col-sm-12">
-          <h4 className='fw-bold text-center text-light pt-4'>Project by StartdustDev</h4>
-        </div>
-      </div>
-    </div>
-  </footer>
-)
+// components/Footer.js
+
+const Footer = () => {
+    return (
+        <footer className="bg-gray-800 py-6">
+            <div className="max-w-7xl mx-auto px-4">
+                <div className="flex justify-center items-center">
+                    <p className="text-gray-300 text-sm">
+                        &copy; {new Date().getFullYear()} Project by StartdustDev.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    );
+};
 
 export default Footer;

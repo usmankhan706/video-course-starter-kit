@@ -76,8 +76,8 @@ const AdminNewLesson: NextPage<AdminNewLessonPageProps> = ({ uploadUrl, uploadId
             <MuxUploader
               endpoint={uploadUrl}
               type="bar"
-              status
-              style={{ '--button-border-radius': '40px' }}
+              
+              
               onSuccess={() => setIsVideoUploaded(true)}
               className='w-full mb-6'
             />
